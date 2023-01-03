@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - /backend:/app
+  web_tests:
+    image: vidly-web
+    command: npm test
+  api:
+    build: ./backend
+    ports:
+      - 3001:3001
+    volumes:
+      - /frontend:/app
+    environment:
+      DB_URL: mongodb://db/vidly
+    command: ./docker-entrypoint.sh
+  api_tests:
+    image: vidly-api
+    command: npm test
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - vidly:/data/db
+
+volumes:
+  vidly:
