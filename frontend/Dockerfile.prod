@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-ENV REACT_APP_API_URL=http://3.87.113.218:3001/api
+# ENV REACT_APP_API_URL=http://3.87.113.218:3001/api
 RUN npm run build
 
 # Step 2: Producation stage
