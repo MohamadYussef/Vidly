@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo "test"
                 sh '''
-                echo from term
+                echo from term.
                 echo ${BUILD_NUMBER}
                 
                 '''
